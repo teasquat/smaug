@@ -1,3 +1,2 @@
 build:
-	moonc -t src/build/lua .
-	java -cp core\libs\bcel.jar;core\libs\luaj.jar luajc -r -d src\build\classes src\build\lua
+	moonc -t src/build/lua . && java -cp egg/lib/bcel.jar:egg/lib/luaj.jar luajc -r -d src/build/classes src/build/lua
