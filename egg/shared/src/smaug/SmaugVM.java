@@ -252,7 +252,7 @@ public class SmaugVM implements ApplicationListener, InputProcessor, ResourceFin
     }
 
     state++;
-    
+
     return false;
   }
 }
