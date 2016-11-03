@@ -32,9 +32,11 @@ public class DesktopLauncer {
 
     try {
       config = (Map<String, Object>) yaml.load(DesktopLauncer.class.getResourceAsStream("/dragon/_config.yml"));
+
     } catch(Exception e) {
       try {
         config = (Map<String, Object>) yaml.load(new FileInputStream(new File("dragon/_config.yml")));
+
       } catch (Exception e1) {
         System.err.println(e1.getMessage());
         System.exit(-1);
