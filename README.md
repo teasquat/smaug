@@ -1,2 +1,2 @@
-# dragon
+# smaug
 LibGDX engine with MoonScript

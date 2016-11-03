@@ -9,18 +9,18 @@ import com.badlogic.gdx.Files;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
-import dragon.DragonVM;
+import smaug.SmaugVM;
 
 public class DesktopLauncer {
   @SuppressWarnings("unchecked")
   public static void main(String[] args) {
     LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 
-    cfg.addIcon("dragon/icon-256.png", Files.FileType.Internal);
-    cfg.addIcon("dragon/icon-192.png", Files.FileType.Internal);
-    cfg.addIcon("dragon/icon-64.png",  Files.FileType.Internal);
-    cfg.addIcon("dragon/icon-32.png",  Files.FileType.Internal);
-    cfg.addIcon("dragon/icon-16.png",  Files.FileType.Internal);
+    cfg.addIcon("smaug/icon-256.png", Files.FileType.Internal);
+    cfg.addIcon("smaug/icon-192.png", Files.FileType.Internal);
+    cfg.addIcon("smaug/icon-64.png",  Files.FileType.Internal);
+    cfg.addIcon("smaug/icon-32.png",  Files.FileType.Internal);
+    cfg.addIcon("smaug/icon-16.png",  Files.FileType.Internal);
 
     cfg.forceExit = false;
     cfg.width     = 800;
@@ -31,11 +31,11 @@ public class DesktopLauncer {
     Map config;
 
     try {
-      config = (Map<String, Object>) yaml.load(DesktopLauncer.class.getResourceAsStream("/dragon/_config.yml"));
+      config = (Map<String, Object>) yaml.load(DesktopLauncer.class.getResourceAsStream("/smaug/_config.yml"));
 
     } catch(Exception e) {
       try {
-        config = (Map<String, Object>) yaml.load(new FileInputStream(new File("dragon/_config.yml")));
+        config = (Map<String, Object>) yaml.load(new FileInputStream(new File("smaug/_config.yml")));
 
       } catch (Exception e1) {
         System.err.println(e1.getMessage());
@@ -67,6 +67,6 @@ public class DesktopLauncer {
       }
     }
 
-    new LwjglApplication(new DragonVM(config), cfg);
+    new LwjglApplication(new SmaugVM(config), cfg);
   }
 }

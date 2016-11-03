@@ -1,4 +1,4 @@
-package dragon;
+package smaug;
 
 import java.lang.reflect.Field;
 

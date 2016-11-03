@@ -1,4 +1,4 @@
-package dragon;
+package smaug;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Application.ApplicationType;
@@ -7,18 +7,18 @@ import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.jse.CoerceJavaToLua;
 
 public class Callbacks {
-  private DragonVM vm;
+  private SmaugVM vm;
 
   private LuaValue root;
   private boolean is_enabled;
 
-  public Callbacks(DragonVM vm) {
+  public Callbacks(SmaugVM vm) {
     this.vm = vm;
   }
 
   public void enable() {
     is_enabled = true;
-    root = vm.lua.get("dragon");
+    root = vm.lua.get("smaug");
   }
 
   public void load() {

@@ -1,4 +1,4 @@
-package dragon;
+package smaug;
 
 import java.io.InputStream;
 import java.io.BufferedReader;
@@ -27,8 +27,8 @@ import org.luaj.vm2.lib.VarArgFunction;
 import org.luaj.vm2.lib.jse.JsePlatform;
 import org.luaj.vm2.lib.jse.CoerceJavaToLua;
 
-public class DragonVM implements ApplicationListener, InputProcessor, ResourceFinder {
-  public static final String TAG     = "DragonVM";
+public class SmaugVM implements ApplicationListener, InputProcessor, ResourceFinder {
+  public static final String TAG     = "SmaugVM";
   public static final String VERSION = "v0.0.0";
   public static final Helpers util   = new Helpers()
 
@@ -39,7 +39,7 @@ public class DragonVM implements ApplicationListener, InputProcessor, ResourceFi
   private boolean is_ready;
   private int state;
 
-  public DragonVM(Map config) {
+  public SmaugVM(Map config) {
     this.config = config;
   }
 
@@ -195,8 +195,8 @@ public class DragonVM implements ApplicationListener, InputProcessor, ResourceFi
 
         lua = JsePlatform.standardGlobals();
         lua.get("package").set("path", "?.lua;?/init.lua");
-        lua.set("dragon", LuaValue.tableOf());
-        lua.get("dragon").set("project", convertConfig(config));
+        lua.set("smaug", LuaValue.tableOf());
+        lua.get("smaug").set("project", convertConfig(config));
 
         lua.set("print", new VarArgFunction() {
           @Override public LuaValue invoke(Varargs args) {
@@ -245,7 +245,7 @@ public class DragonVM implements ApplicationListener, InputProcessor, ResourceFi
         loading.setText("Initializing the game");
         break;
         case 2:
-          lua.get("require").call("dragon");
+          lua.get("require").call("smaug");
           Gdx.input.setInputProcessor(this);
           loading.setText("Touch screen to proceed");
           break;
