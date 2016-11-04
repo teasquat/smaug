@@ -1,0 +1,180 @@
+#!/usr/bin/env lua
+
+local cfg = require "luarocks/cfg"
+local fs  = require "luarocks/fs"
+
+local working_path = fs.current_dir() .. "/"
+local engine_path  = debug.getinfo(1, "S").source:match("(.*/)"):sub(2, -5)
+
+local gradlew      = cfg.platforms.windows and "gradlew" or "./gradlew"
+local temp_path    = ".smaug/"
+local config_path  = "_config.yml"
+local needs_clean  = false
+
+local function copy(source, d)
+  local src = engine_path  .. source
+  local d   = working_path .. d
+
+  if fs.is_dir(src) then
+    fs.make_dir(d)
+    fs.copy_contents(src, d)
+  else
+    fs.copy(src, d)
+  end
+end
+
+local function execute(args, quiet)
+  if needs_clean then
+    args        = "clean " .. args
+    needs_clean = false
+  end
+
+  fs.change_dir(working_path .. temp_path)
+
+  if quiet then
+    fs.execute_quiet(gradlew .. " " .. args)
+  else
+    fs.execute(gradlew .. " " .. args)
+  end
+end
+
+local function mkex(f)
+  fs.chmod(working_path .. file, "777")
+end
+
+local function read(f)
+  local file = io.open(file, "rb")
+  local cont = file:read("*all")
+
+  file:close()
+
+  return cont
+end
+
+local function version()
+  return read(engine_path .. "egg/VERSION")
+end
+
+local function check(m, normal)
+  local new    = arg[1] == "new"
+  local exists = fs.exists(working_path .. config_path)
+
+  if not new and not exists then
+    print "No project found!"
+    os.exit(-1)
+  end
+
+  if not new and exists then
+    print "Project already exists!"
+    os.exit(-1)
+  end
+
+  if not normal then
+    m = m:upper()
+  end
+
+  print(m)
+
+  if not exists then
+    copy("egg", temp_path)
+    copy("res", temp_path .. "res")
+
+    copy("src/build/classes", temp_path .. "shared/precompiled")
+
+    mkex(temp_path .. "gradlew")
+    mkex(temp_path .. "shared/precompile")
+
+    needs_clean = true
+  end
+end
+
+local function help()
+  print "Smaug - The Dragon Engine v0.0.1"
+  print "\nUsage - Commands"
+
+  print "  smaug init <project name>"
+  print "  smaug run <platform>"
+  print "  smaug build <build platform>"
+  print "  smaug clean"
+  print "  smaug update"
+  print "  smaug force-update"
+  print "  smaug version"
+  print "  smaug help"
+
+  print ""
+
+  print "where ..."
+
+  print "<project name>   is the name of the project, defaults to 'my_project'"
+  print "<platform>       is the platform; 'desktops' or 'android', defaults to 'desktop'"
+  print "<build platform> is the build platform; 'desktop', 'android', 'ios', 'windows', 'linux' or 'mac', defaults to 'desktop'"
+
+  os.exit(-1)
+end
+
+if arg[1] == "build" then
+  check "Building project!"
+
+  if #arg < 2 or arg[2] == "desktop" then
+    execute "update updateDesktop desktop:dist"
+  elseif arg[2] == "android" then
+    execute "update updateAndroid android:dist"
+  elseif arg[2] == "ios" then
+    execute "update updateIOS ios:dist"
+  elseif arg[2] == "windows" then
+    execute "update updateWindows windows:dist"
+  elseif arg[2] == "linux" then
+    execute "update updateLinux linux:dist"
+  elseif arg[2] == "mac" then
+    execute "update updateMac mac:dist"
+  else
+    help()
+  end
+elseif arg[1] == "run" then
+  check "Running project!"
+
+  if #arg < 2 or arg[2] == "desktop" then
+    execute "update updateDesktop desktop:run"
+  elseif arg[2] == "android" then
+    execute "update updateAndroid android:run"
+  else
+    help()
+  end
+
+elseif arg[1] == "init" then
+  check "Initializing new project!"
+
+  local name = "my_project"
+
+  if #arg > 1 then
+    name = arg[2]
+  end
+
+  execute("init -PinitName=\"" .. name "\"")
+
+elseif arg[1] == "clean" then
+  check "Cleaning temporary data!"
+  execute "clean"
+
+elseif arg[1] == "update" then
+  check "Updating project runtime!"
+
+  local version = read(working_path .. temp_path .. "VERSION")
+
+  if not version() == version then
+    fs.delete(working_path .. temp_path)
+    check("Updating project runtime to " .. version() .. "!", true)
+  else
+    print "Project already up-to-date!"
+  end
+
+elseif arg[1] == "force-update" then
+  fs.delete(working_path .. temp_path)
+  check("Force-updating project runtime!")
+
+elseif arg[1] == "version" then
+  print(version())
+
+elseif arg[1] == "help" then
+  help()
+end

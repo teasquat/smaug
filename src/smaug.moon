@@ -15,7 +15,7 @@ smaug.File    = require "smaug.dep.File"
 smaug.file_system = require "smaug.file_system"
 
 smaug.run = ->
-  dt = smaug.timer.getDelta!
+  dt = smaug.timer.get_delta!
 
   smaug.update(dt) if smaug.update
 
