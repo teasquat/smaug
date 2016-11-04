@@ -56,7 +56,7 @@ local function version()
 end
 
 local function check(m, normal)
-  local new    = arg[1] == "new"
+  local new    = arg[1] == "init"
   local exists = fs.exists(working_path .. config_path)
 
   if not new and not exists then
