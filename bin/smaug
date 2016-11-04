@@ -39,7 +39,7 @@ local function execute(args, quiet)
 end
 
 local function mkex(f)
-  fs.chmod(working_path .. file, "777")
+  fs.chmod(working_path .. f, "777")
 end
 
 local function read(f)
