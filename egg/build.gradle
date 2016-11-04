@@ -176,7 +176,7 @@ task update(dependsOn: [':rocks', ':updateAssets']) << {
 
     def src = ".."
     def res = "res"
-    def out = "android/assets/yae"
+    def out = "android/assets/smaug"
     def files = [ "icon.png", "font.ttf" ]
 
     for(fl in files) {
@@ -200,7 +200,7 @@ task update(dependsOn: [':rocks', ':updateAssets']) << {
 }
 
 task updateDesktop() << {
-    def out = "android/assets/yae"
+    def out = "android/assets/smaug"
     copyAndReplace("platforms/desktop/DesktopLauncher.java", "desktop/src/$packageDir/desktop/DesktopLauncher.java")
     copyAndResizeIcon("${out}/icon-16.png", 16)
     copyAndResizeIcon("${out}/icon-32.png", 32)
@@ -244,8 +244,8 @@ def configure() {
         ext.cfg = new Yaml().load(f.text)
     } else {
         ext.cfg = new Yaml().load(
-            "name: yae\n" +
-            "package: yae\n" +
+            "name: smaug\n" +
+            "package: smaug\n" +
             "version: 1.0"
         )
     }

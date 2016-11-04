@@ -2,4 +2,4 @@
 cd src
 moonc -t build/lua .
 cd ../
-java -cp egg/lib/bcel.jar:egg/lib/luaj.jar luajc -r -d src/build/classes src/build/lua
+java -cp lib/bcel.jar:lib/luaj.jar luajc -r -d src/build/classes src/build/lua
