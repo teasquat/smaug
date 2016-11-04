@@ -18,8 +18,8 @@ get_memory = ->
 open_url = (url) ->
   Gdx.net\openURI url
 
-vibrate = (s) ->
-  Gdx.input\vibrate s * 1000
+vibrate = (ms) ->
+  Gdx.input\vibrate ms
 
 quit = ->
   Gdx.app\exit!
