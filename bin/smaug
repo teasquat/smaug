@@ -64,7 +64,7 @@ local function check(m, normal)
     os.exit(-1)
   end
 
-  if not new and exists then
+  if new and exists then
     print "Project already exists!"
     os.exit(-1)
   end
