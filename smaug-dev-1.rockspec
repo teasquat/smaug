@@ -1,5 +1,5 @@
 package = "smaug"
-version = "1"
+version = "dev-1"
 
 source = {
   url = "git://github.com/teasquat/smaug.git",
