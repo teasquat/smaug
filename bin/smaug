@@ -150,7 +150,7 @@ elseif arg[1] == "init" then
     name = arg[2]
   end
 
-  execute("init -PinitName=\"" .. name "\"")
+  execute("init -PinitName=\"" .. name .. "\"")
 
 elseif arg[1] == "clean" then
   check "Cleaning temporary data!"
