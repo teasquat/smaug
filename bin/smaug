@@ -43,7 +43,7 @@ local function mkex(f)
 end
 
 local function read(f)
-  local file = io.open(file, "rb")
+  local file = io.open(f, "rb")
   local cont = file:read("*all")
 
   file:close()

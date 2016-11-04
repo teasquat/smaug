@@ -156,7 +156,7 @@ task init() << {
         "package: com.${uname}.${pname}\n" +
         "version: 1.0"
 
-    new File("../project.yml").text = text
+    new File("../_config.yml").text = text
     copy { from "res"; into "../assets"; include "main.moon" }
     copy { from "res"; into "../"; include ".gitignore" }
 }
@@ -173,7 +173,7 @@ task update(dependsOn: [':rocks', ':updateAssets']) << {
     if (!file("shared/build/moon").exists()) {
         file("shared/build/moon").mkdirs();
     }
-    
+
     def src = ".."
     def res = "res"
     def out = "android/assets/yae"
@@ -187,13 +187,13 @@ task update(dependsOn: [':rocks', ':updateAssets']) << {
         }
     }
 
-    def scfg = new Yaml().load(file("$src/project.yml").text)
+    def scfg = new Yaml().load(file("$src/_config.yml").text)
 
     if (scfg.sign) {
         scfg.sign = "private"
     }
 
-    def cfgf = file("$out/project.yml")
+    def cfgf = file("$out/_config.yml")
     if (cfgf.exists()) cfgf.delete()
     cfgf.createNewFile()
     cfgf.text = new Yaml().dump(scfg)
@@ -238,7 +238,7 @@ task updateAssets(type: Sync) {
 }
 
 def configure() {
-    def f = file("../project.yml")
+    def f = file("../_config.yml")
 
     if (f.exists()) {
         ext.cfg = new Yaml().load(f.text)
