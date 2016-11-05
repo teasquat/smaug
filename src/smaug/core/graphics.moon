@@ -8,7 +8,7 @@ Matrix4   = java.require "com.badlogic.gdx.math.Matrix4"
 SmaugVM   = java.require "smaug.SmaugVM"
 
 OrthographicCamera = java.require "com.badlogic.gdx.graphics.OrthographicCamera"
-ShapeRender        = java.require "com.badlogic.gdx.graphics.glutils.ShapeRender"
+ShapeRender        = java.require "com.badlogic.gdx.graphics.glutils.ShapeRenderer"
 SpriteBatch        = java.require "com.badlogic.gdx.graphics.g2d.SpriteBatch"
 
 shader = SpriteBatch\createDefaultShader!
