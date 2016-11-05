@@ -32,6 +32,8 @@ public class SmaugVM implements ApplicationListener, InputProcessor, ResourceFin
   public static final String VERSION = "v0.0.0";
   public static final Helpers util   = new Helpers();
 
+  public static Globals lua;
+
   private final Callbacks callbacks = new Callbacks(this);
 
   private LoadingScreen loading;
@@ -194,6 +196,7 @@ public class SmaugVM implements ApplicationListener, InputProcessor, ResourceFin
       case 1:
 
         lua = JsePlatform.standardGlobals();
+
         lua.get("package").set("path", "?.lua;?/init.lua");
         lua.set("smaug", LuaValue.tableOf());
         lua.get("smaug").set("project", convertConfig(config));

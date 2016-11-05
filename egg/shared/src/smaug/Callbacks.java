@@ -91,6 +91,7 @@ public class Callbacks {
     }
 
     LuaValue callback = root.get(name);
+
     if (!callback.isfunction()) {
       return;
     }
