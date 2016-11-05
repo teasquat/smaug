@@ -14,7 +14,7 @@ for k, v in pairs key_codes
   key_codes[v] = k
 
 button_codes = {}
-for k, v in pairs mouse
+for k, v in pairs buttons
   button_codes[v] = k
 
 format_codes = {}
