@@ -19,13 +19,15 @@ smaug.File    = require "smaug/utils/File"
 smaug.run = ->
   dt = smaug.timer.get_delta!
 
-  smaug.update(dt) if smaug.update
+  print "yo?"
 
-  smaug.graphics.clear!
-  smaug.graphics.origin!
+  --smaug.update(dt) if smaug.update
 
-  smaug.draw! if smaug.draw
+  --smaug.graphics.clear!
+  --smaug.graphics.origin!
 
-  smaug.graphics.present!
+  --smaug.draw! if smaug.draw
+
+  --smaug.graphics.present!
 
 require "main"
