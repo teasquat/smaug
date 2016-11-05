@@ -8,7 +8,7 @@ class
     local file
 
     unless path
-      file = smaug.File "smaug/font.tff", f_type or "local"
+      file = smaug.File "smaug/font.tff", f_type 
     else
       file = smaug.File path, f_type
 
