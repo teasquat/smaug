@@ -1,3 +1,3 @@
 with smaug
-  .update = ->
-    print "Hello, world!"
+  .draw = ->
+    .graphics.print "Hello, world!", 10, 10
