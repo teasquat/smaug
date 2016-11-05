@@ -18,7 +18,7 @@ task windows() << {
   config.platform = Packr.Platform.windows
   config.jdk = "https://bitbucket.org/alexkasko/openjdk-unofficial-builds/downloads/openjdk-1.7.0-u80-unofficial-windows-i586-image.zip"
   config.executable = appName
-  config.jar = file("build/libs/desktop-${version}.jar").absolutePath
+  config.jar = file("build/lib/desktop-${version}.jar").absolutePath
   config.mainClass = project.mainClassName.replace(".", "/")
   config.vmArgs = ["-Xmx1G"]
   config.outDir = file("../../build/windows").absolutePath
@@ -30,7 +30,7 @@ task linux() << {
   config.platform = Packr.Platform.linux32
   config.jdk = "https://bitbucket.org/alexkasko/openjdk-unofficial-builds/downloads/openjdk-1.7.0-u80-unofficial-linux-i586-image.zip"
   config.executable = appName
-  config.jar = file("build/libs/desktop-${version}.jar").absolutePath
+  config.jar = file("build/lib/desktop-${version}.jar").absolutePath
   config.mainClass = project.mainClassName.replace(".", "/")
   config.vmArgs = ["-Xmx1G"]
   config.outDir = file("../../build/linux32").absolutePath
@@ -47,7 +47,7 @@ task mac() << {
   config.platform = Packr.Platform.mac
   config.jdk = "https://bitbucket.org/alexkasko/openjdk-unofficial-builds/downloads/openjdk-1.7.0-u80-unofficial-macosx-x86_64-image.zip"
   config.executable = appName
-  config.jar = file("build/libs/desktop-${version}.jar").absolutePath
+  config.jar = file("build/lib/desktop-${version}.jar").absolutePath
   config.mainClass = project.mainClassName.replace(".", "/")
   config.vmArgs = ["-Xmx1G"]
   config.outDir = file("../../build/mac").absolutePath + "/${appName} v${version}.app"
@@ -67,7 +67,7 @@ task dist(type: Jar, dependsOn: classes) {
     doLast {
         try {
             ant.signjar(
-                jar: file("build/libs/desktop-${version}.jar").absolutePath,
+                jar: file("build/lib/desktop-${version}.jar").absolutePath,
                 alias: cfg.sign.keyAlias,
                 keystore: file(cfg.sign.storeFile).absolutePath,
                 storepass: cfg.sign.storePassword,
@@ -78,7 +78,7 @@ task dist(type: Jar, dependsOn: classes) {
         file("../../build/desktop").mkdirs()
 
         copy {
-            from "build/libs"
+            from "build/lib"
             into "../../build/desktop"
             include "desktop-${version}.jar"
             rename "desktop-${version}.jar", "${appName} v${version}.jar"

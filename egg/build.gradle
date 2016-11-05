@@ -62,12 +62,12 @@ project(":shared") {
     apply plugin: "java"
 
     dependencies {
-        compile files("../libs/luaj.jar")
-        compile files("../libs/snakeyaml.jar")
+        compile files("../lib/luaj.jar")
+        compile files("../lib/snakeyaml.jar")
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-        if (cfg.libs) { for (lib in cfg.libs) { compile lib } }
+        if (cfg.lib) { for (lib in cfg.lib) { compile lib } }
     }
 }
 
@@ -91,8 +91,8 @@ project(":android") {
 
     dependencies {
         compile project(":shared")
-        compile files("../libs/luaj.jar")
-        compile files("../libs/snakeyaml.jar")
+        compile files("../lib/luaj.jar")
+        compile files("../lib/snakeyaml.jar")
         compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
@@ -113,8 +113,8 @@ project(":ios") {
 
     dependencies {
         compile project(":shared")
-        compile files("../libs/luaj.jar")
-        compile files("../libs/snakeyaml.jar")
+        compile files("../lib/luaj.jar")
+        compile files("../lib/snakeyaml.jar")
         compile "org.robovm:robovm-rt:${roboVMVersion}"
         compile "org.robovm:robovm-cocoatouch:${roboVMVersion}"
         compile "com.badlogicgames.gdx:gdx-backend-robovm:$gdxVersion"
