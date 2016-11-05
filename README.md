@@ -10,3 +10,9 @@ Works for **Linux**, **Windows**, **OS X**, **Android** and **Ouya**.
 ```
 luarocks install --server=http://luarocks.org/dev smaug
 ```
+
+---
+
+```
+- Fix filesystems for font loading
+```
