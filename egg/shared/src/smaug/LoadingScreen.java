@@ -19,6 +19,7 @@ public class LoadingScreen implements Disposable {
   private final BitmapFont font;
   private final Sprite icon;
   private final GlyphLayout glyphs = new GlyphLayout();
+  private final Color color;
 
   private String text = "";
 

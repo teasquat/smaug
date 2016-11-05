@@ -245,12 +245,12 @@ public class SmaugVM implements ApplicationListener, InputProcessor, ResourceFin
           }
         }});
 
-        loading.setText("Initializing the game");
+        loading.set_text("Initializing the game");
         break;
         case 2:
           lua.get("require").call("smaug");
           Gdx.input.setInputProcessor(this);
-          loading.setText("Touch screen to proceed");
+          loading.set_text("Touch screen to proceed");
           break;
     }
 

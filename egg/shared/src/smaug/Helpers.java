@@ -31,7 +31,7 @@ public class Helpers {
     String name = "unknown";
 
     if (Gdx.app.getType() == ApplicationType.Desktop) {
-      String os_name = System.getProperty("os.name").loLowerCase();
+      String os_name = System.getProperty("os.name").toLowerCase();
 
       if (os_name.startsWith("windows")) {
         name = "Windows";

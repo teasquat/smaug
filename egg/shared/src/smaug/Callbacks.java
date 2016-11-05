@@ -90,7 +90,7 @@ public class Callbacks {
       return;
     }
 
-    LuaValue callback = root.get(name);
+    LuaValue callback = root.get(key);
 
     if (!callback.isfunction()) {
       return;
