@@ -7,13 +7,14 @@ export type = (v) ->
     return cls.__name if cls
   base
 
-smaug.console = require "smaug/console"
-smaug.java    = require "smaug/java"
+smaug.console = require "smaug/core/console"
+smaug.java    = require "smaug/core/java"
+
+smaug.file_system = require "smaug/core/file_system"
+smaug.timer       = require "smaug/core/timer"
+smaug.graphics    = require "smaug/core/graphics"
 
 smaug.File    = require "smaug/utils/File"
-
-smaug.file_system = require "smaug/file_system"
-smaug.timer       = require "smaug/timer"
 
 smaug.run = ->
   dt = smaug.timer.get_delta!
