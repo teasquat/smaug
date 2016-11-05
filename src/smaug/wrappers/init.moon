@@ -22,7 +22,7 @@ for k, v in pairs formats
   format_codes[v] = k
 
 wrap_codes = {}
-for k, v in pairs texture_wrapping
+for k, v in pairs wraps
   wrap_codes[v] = k
 
 filter_codes = {}
