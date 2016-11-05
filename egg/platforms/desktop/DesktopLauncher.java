@@ -11,7 +11,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 import smaug.SmaugVM;
 
-public class DesktopLauncer {
+public class DesktopLauncher {
   @SuppressWarnings("unchecked")
   public static void main(String[] args) {
     LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
@@ -31,7 +31,7 @@ public class DesktopLauncer {
     Map config;
 
     try {
-      config = (Map<String, Object>) yaml.load(DesktopLauncer.class.getResourceAsStream("/smaug/_config.yml"));
+      config = (Map<String, Object>) yaml.load(DesktopLauncher.class.getResourceAsStream("/smaug/_config.yml"));
 
     } catch(Exception e) {
       try {
