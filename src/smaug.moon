@@ -10,7 +10,7 @@ export type = (v) ->
 smaug.console = require "smaug/console"
 smaug.java    = require "smaug/java"
 
-smaug.File    = require "smaug/dep/File"
+smaug.File    = require "smaug/utils/File"
 
 smaug.file_system = require "smaug/file_system"
 smaug.timer       = require "smaug/timer"
