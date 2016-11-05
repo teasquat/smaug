@@ -15,6 +15,9 @@ smaug.timer       = require "smaug/core/timer"
 smaug.graphics    = require "smaug/core/graphics"
 
 smaug.File    = require "smaug/utils/File"
+smaug.Font    = require "smaug/utils/Font"
+smaug.Image   = require "smaug/utils/Image"
+smaug.Quad    = require "smaug/utils/Quad"
 
 smaug.run = ->
   dt = smaug.timer.get_delta!
