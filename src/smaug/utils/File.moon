@@ -7,7 +7,7 @@ class
       when "internal"
         @file = Gdx.files\internal f
       when "local"
-        @file = SmaugVM.util\localfile f
+        @file = SmaugVM.util\local_file f
       when "external"
         @file = Gdx.files\external f
       when "classpath"
