@@ -30,7 +30,7 @@ import org.luaj.vm2.lib.jse.CoerceJavaToLua;
 public class SmaugVM implements ApplicationListener, InputProcessor, ResourceFinder {
   public static final String TAG     = "SmaugVM";
   public static final String VERSION = "v0.0.0";
-  public static final Helpers util   = new Helpers()
+  public static final Helpers util   = new Helpers();
 
   private final Callbacks callbacks = new Callbacks(this);
 
