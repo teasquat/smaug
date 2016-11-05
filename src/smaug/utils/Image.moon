@@ -1,5 +1,5 @@
-Texture    = smaug.java.require "com.badlogic.gdx.graphics.Texture"
-Constants = smaug.java.require "smaug.wrappers"
+Texture   = smaug.java.require "com.badlogic.gdx.graphics.Texture"
+Constants = require "smaug.wrappers"
 
 class
   new: (path, format = "rgba8", f_type) =>
